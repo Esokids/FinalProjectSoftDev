@@ -2,8 +2,16 @@ import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import com.mongodb.client.gridfs.model.GridFSFile;
 import org.bson.*;
+import org.bson.types.ObjectId;
+import sun.awt.image.ImageCache;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.*;
+
 public class ProductDao {
     static MongoClientURI uri = new MongoClientURI("mongodb://admin:password1@ds249503.mlab.com:49503/finalproject");
     static MongoClient client = new MongoClient(uri);
@@ -32,4 +40,10 @@ public class ProductDao {
         }
         return thisProduct;
     }
+    /*
+    static public byte[] getPicture(String pId) throws IOException {
+        GridFSBucket gridFSBucket = GridFSBuckets.create(db);
+        gridFSBucket.find(new Document("_id",pId)).iterator();
+    }
+    */
 }
