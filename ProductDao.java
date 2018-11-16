@@ -7,7 +7,6 @@ import com.mongodb.client.gridfs.GridFSBuckets;
 import com.mongodb.client.gridfs.model.GridFSFile;
 import org.bson.*;
 import org.bson.types.ObjectId;
-import sun.awt.image.ImageCache;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;

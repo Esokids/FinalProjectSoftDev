@@ -25,18 +25,35 @@ public class Main {
 //        Product product = MainpageService.getProduct("S03");
 //        System.out.println(product);
 
+
+//        User user = UserService.getUser("admin"); //Exists username
+//        User user = UserService.getUser("admin555"); //Not Exists username
+//        if(user != null) {
+//            System.out.println("Username : " + user.getUsername() + ", Password : " + user.getPassword() + ", Type : " + user.getType());
+//        }else{
+//            System.out.println("This username not exists");
+//        }
+
+//        Add User to Database
+//        if(UserService.addUser("user1","123456"))
+//            System.out.println("Success !!");
+//        else
+//            System.out.println("Fail");
+
+/*      ************* IMAGE NOT DONE *************
+
         GridFSBucket gridFSBucket = GridFSBuckets.create(db);
         InputStream streamToUploadFrom = new FileInputStream(new File("C:\\Users\\WinzY\\Desktop\\pajamas.jpg"));
         ObjectId fileId = gridFSBucket.uploadFromStream("pajamas",streamToUploadFrom);
-//
-//        gridFSBucket.find().forEach(
-//                new Block<GridFSFile>() {
-//                    @Override
-//                    public void apply(GridFSFile gridFSFile) {
-//                        System.out.println(gridFSFile.getFilename());
-//                    }
-//                }
-//        );
+
+        gridFSBucket.find().forEach(
+                new Block<GridFSFile>() {
+                    @Override
+                    public void apply(GridFSFile gridFSFile) {
+                        System.out.println(gridFSFile.getFilename());
+                    }
+                }
+        );
 
         FileOutputStream streamToDownloadTo = new FileOutputStream("C:\\Users\\WinzY\\Desktop\\pajama3sNew12345.jpg");
         gridFSBucket.downloadToStream(fileId, streamToDownloadTo);
@@ -44,13 +61,13 @@ public class Main {
         System.out.println(streamToDownloadTo);
 
 
-//        GridFSDownloadStream downloadStream = gridFSBucket.openDownloadStream();
-//        int fileLength = (int) downloadStream.getGridFSFile().getLength();
-//        byte[] bytesToWriteTo = new byte[fileLength];
-//        downloadStream.read(bytesToWriteTo);
-//        downloadStream.close();
-//
-//        System.out.println(new String(bytesToWriteTo));
+        GridFSDownloadStream downloadStream = gridFSBucket.openDownloadStream();
+        int fileLength = (int) downloadStream.getGridFSFile().getLength();
+        byte[] bytesToWriteTo = new byte[fileLength];
+        downloadStream.read(bytesToWriteTo);
+        downloadStream.close();
 
+        System.out.println(new String(bytesToWriteTo));
+*/
     }
 }

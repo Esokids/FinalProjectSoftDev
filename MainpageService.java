@@ -3,8 +3,8 @@ public class MainpageService {
     public static ArrayList<Product> showAllProduct(){
         return ProductDao.getAllProducts();
     }
-    public static Product getProduct(String pId)
-    {
+
+    public static Product getProduct(String pId) {
         return ProductDao.getProduct(pId);
     }
 }
