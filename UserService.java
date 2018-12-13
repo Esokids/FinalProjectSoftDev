@@ -12,4 +12,18 @@ public class UserService {
             return false;
     }
 
+    public static boolean changePhone(String username,String phone){
+        if(UserDao.updatePhone(username,phone))
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean changeAddress(String username,String address){
+        if(UserDao.updatePhone(username,address))
+            return true;
+        else
+            return false;
+    }
+
 }
