@@ -33,21 +33,21 @@ public class UserDao {
         }
     }
 
-    static public boolean updatePhone(String username, String phone){
-        Document findUser = new Document("_id",username);
+    static public boolean updatePhone(User user){
+        Document findUser = new Document("_id",user.getUsername());
         MongoCursor<Document> cursor = col.find(findUser).iterator();
         if(cursor.hasNext()){
-            col.updateOne(findUser,new Document("$set",new Document("phone",phone)));
+            col.updateOne(findUser,new Document("$set",new Document("phone",user.getPhone())));
             return true;
         }
         return false;
     }
 
-    static public boolean updateAddress(String username, String address){
-        Document findUser = new Document("_id",username);
+    static public boolean updateAddress(User user){
+        Document findUser = new Document("_id",user.getUsername());
         MongoCursor<Document> cursor = col.find(findUser).iterator();
         if(cursor.hasNext()){
-            col.updateOne(findUser,new Document("$set",new Document("address",address)));
+            col.updateOne(findUser,new Document("$set",new Document("address",user.getAddress())));
             return true;
         }
         return false;
