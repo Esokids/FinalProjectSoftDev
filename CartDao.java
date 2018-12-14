@@ -23,7 +23,7 @@ public class CartDao {
     static public ArrayList<Cart> getAllProductCart(User user){
         ArrayList<Cart> cart = new ArrayList<>();
         Document findUser = new Document("username",user.getUsername());
-        MongoCursor<Document> cursor = col.find(findUser).iterator();
+        MongoCursor<Document> cursor = col.find(findUser).sort(new Document("pId",1)).iterator();
         while(cursor.hasNext()){
             Document doc = cursor.next();
             Product thisProduct = ProductDao.getProduct(doc.get("pId").toString());

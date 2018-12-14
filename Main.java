@@ -10,25 +10,38 @@ import org.bson.types.ObjectId;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
-    static MongoClientURI uri = new MongoClientURI("mongodb://admin:password1@ds249503.mlab.com:49503/finalproject");
-    static MongoClient client = new MongoClient(uri);
-    static MongoDatabase db = client.getDatabase(uri.getDatabase());
-    static MongoCollection<Document> col = db.getCollection("product");
 
     public static void main(String[] args) throws IOException {
 
-        User user = UserService.getUser("user1");
-        ArrayList<Cart> cart = null;
-        cart = CartService.getAllProduct(user);
-        if(cart == null){
-            System.out.println("No product in cart");
-        }else{
-            for(Cart e : cart){
-                System.out.println(e.getProduct() + " " + e.getNum());
-            }
+//        ArrayList<Product> list = ProductService.showAllProduct();
+//        list.sort(Comparator.comparing(Product::getId));
+
+//        ArrayList<Cart> list = CartService.getAllProduct(UserService.getUser("user1"));
+//        for(Cart e : list){
+//            System.out.println(e.getProduct().getId());
         }
+
+//        User user = UserService.getUser("user123");
+//        System.out.println(user.getUsername()+" "+user.getPassword());
+
+//        User user = UserService.getUser("user1");
+//        ArrayList<Cart> cart = null;
+//        cart = CartService.getAllProduct(user);
+//        if(cart == null){
+//            System.out.println("No product in cart");
+//        }else{
+//            for(Cart e : cart){
+//                System.out.println(e.getProduct() + " " + e.getNum());
+//            }
+//        }
+
+//        User user = UserService.getUser("user1");
+//        Product product = ProductService.getProduct("S04");
+//        CartService.addToCart(user,product,2);
 
 //        ArrayList<Product> product = MainpageService.showAllProduct();
 //        for(Product e : product)

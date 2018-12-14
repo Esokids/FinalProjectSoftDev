@@ -17,14 +17,14 @@ public class UserDao {
         User thisUser = null;
         if(cursor.hasNext()){
             Document user = cursor.next();
-            thisUser = new User(user.get("_id").toString(),user.get("password").toString(),user.get("phone").toString(),user.get("address").toString(),user.get("type").toString());
+            thisUser = new User(user.get("_id").toString(),user.get("password").toString(),user.get("phone").toString(),user.get("address").toString());
         }
         return thisUser;
     }
 
     static public boolean addUser(User user) {
         if(getUser(user.getUsername()) == null) {
-            col.insertOne(new Document("_id",user.getUsername()).append("password",user.getPassword()).append("phone",null).append("address",null).append("type", "user"));
+            col.insertOne(new Document("_id",user.getUsername()).append("password",user.getPassword()).append("phone","").append("address",""));
             return true;
         }else {
             return false;

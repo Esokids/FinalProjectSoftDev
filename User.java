@@ -3,14 +3,12 @@ public class User {
     private String password;
     private String phone;
     private String address;
-    private String type;
 
-    public User(String username,String password,String phone,String address,String type) {
+    public User(String username,String password,String phone,String address) {
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.address = address;
-        this.type = type;
     }
 
     public User(String username,String password){
@@ -32,14 +30,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getPhone() {
