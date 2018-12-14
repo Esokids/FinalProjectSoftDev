@@ -2,7 +2,6 @@ import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import org.bson.BsonDocument;
 import org.bson.Document;
 import java.util.*;
 
@@ -23,10 +22,9 @@ public class UserDao {
         return thisUser;
     }
 
-    static public boolean addUser(String username, String password) {
-        if(getUser(username) == null) {
-            Document user = new Document("_id",username).append("password",password).append("phone",null).append("address",null).append("type", "user");
-            col.insertOne(user);
+    static public boolean addUser(User user) {
+        if(getUser(user.getUsername()) == null) {
+            col.insertOne(new Document("_id",user.getUsername()).append("password",user.getPassword()).append("phone",null).append("address",null).append("type", "user"));
             return true;
         }else {
             return false;
@@ -52,11 +50,4 @@ public class UserDao {
         }
         return false;
     }
-
-    /*
-    static public ArrayList<Product> getCart(String username){
-        Document findUser = new Document("_id",username);
-
-    }
-    */
 }

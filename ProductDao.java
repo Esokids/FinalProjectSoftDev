@@ -2,13 +2,7 @@ import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.gridfs.GridFSBucket;
-import com.mongodb.client.gridfs.GridFSBuckets;
-import com.mongodb.client.gridfs.model.GridFSFile;
 import org.bson.*;
-import org.bson.types.ObjectId;
-import java.awt.image.BufferedImage;
-import java.io.*;
 import java.util.*;
 
 public class ProductDao {
@@ -39,10 +33,13 @@ public class ProductDao {
         }
         return thisProduct;
     }
-    /*
-    static public byte[] getPicture(String pId) throws IOException {
-        GridFSBucket gridFSBucket = GridFSBuckets.create(db);
-        gridFSBucket.find(new Document("_id",pId)).iterator();
+
+    static public boolean addProduct(Product product){
+        if(getProduct(product.getId()) == null){
+            col.insertOne(new Document("_id",product.getId()).append("picture", product.getPicture()).append("name", product.getName())
+                    .append("price", product.getPrice()).append("size", product.getSize()).append("color", product.getColor()).append("brand", product.getBrand()));
+            return true;
+        }else
+            return false;
     }
-    */
 }

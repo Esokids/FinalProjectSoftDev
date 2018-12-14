@@ -6,7 +6,8 @@ public class UserService {
     }
 
     public static boolean addUser(String username, String password){
-        if(UserDao.addUser(username,password))
+        User user = new User(username,password);
+        if(UserDao.addUser(user))
             return true;
         else
             return false;

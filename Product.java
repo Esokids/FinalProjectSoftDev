@@ -1,20 +1,23 @@
 public class Product {
     private String id;
-    //private byte picture;
+    private String picture;
     private String name;
     private int price;
     private String size;
     private String color;
     private String brand;
+    private byte image;
     //private int num;
 
-    Product(String id, String name, int price, String size, String color, String brand){
+    Product(String id,String name, int price, String size, String color, String brand){
         this.id = id;
         this.name = name;
         this.price = price;
         this.size = size;
         this.color = color;
         this.brand = brand;
+        //this.picture = picture;
+
     }
 
     public String getId() {
@@ -66,6 +69,14 @@ public class Product {
     }
 
     public String toString(){
-        return id + " " + name + " " + price + " " + size + " " + color;
+        return getId() + " " +getName() + " " + getPrice() + " " + getBrand() + " " + getColor() + " " + getSize();
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

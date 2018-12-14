@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
 public class User {
     private String username;
     private String password;
     private String phone;
     private String address;
     private String type;
-    //private ArrayList<Cart> cart = new ArrayList<Cart>();
 
     public User(String username,String password,String phone,String address,String type) {
         this.username = username;
@@ -14,6 +11,11 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.type = type;
+    }
+
+    public User(String username,String password){
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
