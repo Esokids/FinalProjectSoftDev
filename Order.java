@@ -1,27 +1,16 @@
 import java.util.ArrayList;
 
 public class Order {
-    private String id;
-    private ArrayList<Cart> list;
+    private ArrayList<Cart> order;
 
-    public Order(String id, ArrayList<Cart> list){
-        this.id = id;
-        for(Cart e: list)
-            this.list.add(e);
+    public Order(ArrayList<Cart> list){
+        this.order = list;
     }
-    public String getId() {
-        return id;
+    public ArrayList<Cart> getOrder() {
+        return order;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public ArrayList<Cart> getList() {
-        return list;
-    }
-
-    public void setList(ArrayList<Cart> list) {
-        this.list = list;
+    public void setOrder(ArrayList<Cart> order) {
+        this.order = order;
     }
 }

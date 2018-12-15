@@ -4,7 +4,7 @@ public class Cart {
     private int num;
 
     Cart(User user, Product product, int num) {
-        this.user = this.user;
+        this.user = user;
         this.product = product;
         this.num = num;
     }
@@ -31,5 +31,10 @@ public class Cart {
 
     public void setNum(int num) {
         this.num = num;
+    }
+
+    public String toString(){
+        return user.getUsername() + " " + product.getId() + " " + product.getName() + " " +
+                product.getPrice() + " " + num;
     }
 }
