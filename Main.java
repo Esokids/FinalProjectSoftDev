@@ -7,15 +7,13 @@ import com.mongodb.client.gridfs.model.GridFSUploadOptions;
 import com.mongodb.gridfs.GridFSDBFile;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
 
 //        ArrayList<Product> list = ProductService.showAllProduct();
 //        list.sort(Comparator.comparing(Product::getId));
@@ -23,7 +21,7 @@ public class Main {
 //        ArrayList<Cart> list = CartService.getAllProduct(UserService.getUser("user1"));
 //        for(Cart e : list){
 //            System.out.println(e.getProduct().getId());
-        }
+//        }
 
 //        User user = UserService.getUser("user123");
 //        System.out.println(user.getUsername()+" "+user.getPassword());
