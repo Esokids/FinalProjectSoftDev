@@ -23,11 +23,11 @@ public class CartDao {
     static public ArrayList<Cart> getAllProductCart(User user){
         ArrayList<Cart> cart = new ArrayList<>();
         Document findUser = new Document("username",user.getUsername());
-        MongoCursor<Document> cursor = col.find(findUser).sort(new Document("pId",1)).iterator();
+        MongoCursor<Document> cursor = col.find(findUser).iterator();
         while(cursor.hasNext()){
             Document doc = cursor.next();
             Product thisProduct = ProductDao.getProduct(doc.get("pId").toString());
-            cart.add(new Cart(user,thisProduct,(int)doc.get("num")));
+            cart.add(new Cart(user,thisProduct,doc.getInteger("num")));
         }
         return cart;
     }

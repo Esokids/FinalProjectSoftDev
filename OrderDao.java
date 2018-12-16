@@ -4,6 +4,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.types.ObjectId;
+
 import java.util.ArrayList;
 
 public class OrderDao {
@@ -22,35 +24,24 @@ public class OrderDao {
             doc.put("num",e.getNum());
             arr.add(doc);
         }
-
         col.insertOne(new Document("username","user1").append("order",arr));
     }
 
-    public static Order getOrder(User user){
+    public static ArrayList<Order> getOrder(User user){
         Document findUser = new Document("username",user.getUsername());
-        ArrayList<Cart> thisCart = new ArrayList<>();
-        Order thisOrder = null;
+        ArrayList<Order> thisOrder = new ArrayList<>();
         MongoCursor<Document> cursor = col.find(findUser).iterator();
         while (cursor.hasNext()){
+            ArrayList<Cart> thisCart = new ArrayList<>();
             Document doc = cursor.next();
-            ArrayList<Document> cart = (ArrayList<Document>) doc.get("Order");
+            ArrayList<Document> cart = (ArrayList<Document>) doc.get("order");
             for(int i = 0 ; i < cart.size() ; i++) {
                 String pId = cart.get(i).getString("pId");
                 int num = cart.get(i).getInteger("num");
                 thisCart.add(new Cart(user,ProductDao.getProduct(pId),num));
             }
-            thisOrder = new Order(thisCart);
+            thisOrder.add(new Order(thisCart));
         }
         return thisOrder;
-    }
-
-    public static void main(String[] args) {
-        User user = UserService.getUser("user1");
-//        ArrayList<Cart> cart = CartService.getAllProduct(user);
-//        addOrder(cart);
-
-        Order order = getOrder(user);
-        for(Cart e : order.getOrder())
-            System.out.println(e);
     }
 }

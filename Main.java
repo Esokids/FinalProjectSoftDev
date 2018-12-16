@@ -1,19 +1,20 @@
-import com.mongodb.*;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.gridfs.*;
-import com.mongodb.client.gridfs.model.GridFSFile;
-import com.mongodb.client.gridfs.model.GridFSUploadOptions;
-import com.mongodb.gridfs.GridFSDBFile;
-import org.bson.Document;
-import org.bson.types.ObjectId;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Main {
 
     public static void main(String[] args)  {
+//        User user = UserService.getUser("user1");
+//        ArrayList<Cart> cart = CartService.getAllProduct(user);
+//        OrderService.addOrder(cart);
+
+        User user = UserService.getUser("user1");
+        ArrayList<Order> order = OrderService.getOrder(user);
+        for (Order e : order) {
+            for (Cart ee : e.getOrder())
+                System.out.println(ee);
+            System.out.println("===================");
+        }
+
 
 //        ArrayList<Product> list = ProductService.showAllProduct();
 //        list.sort(Comparator.comparing(Product::getId));
@@ -38,8 +39,8 @@ public class Main {
 //        }
 
 //        User user = UserService.getUser("user1");
-//        Product product = ProductService.getProduct("S04");
-//        CartService.addToCart(user,product,2);
+//        Product product = ProductService.getProduct("S02");
+//        CartService.addToCart(user,product,3);
 
 //        ArrayList<Product> product = MainpageService.showAllProduct();
 //        for(Product e : product)
